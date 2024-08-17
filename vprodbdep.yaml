@@ -1,4 +1,4 @@
-apiVersion: app/v1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: vprodb
@@ -6,10 +6,10 @@ metadata:
     app: vprodb
 spec:
   selector:
-    matchlabels:
+    matchLabels:
       app: vprodb
   replicas: 1
-  templates:
+  template:
     metadata:
       labels:
         app: vprodb
@@ -43,6 +43,6 @@ spec:
         - name: busybox
           image: busybox:latest
           args: ["rm", "-rf", "/var/lib/mysql/lost+found"]
-          voulumemounts:
+          volumeMounts:
             - name: vpro-db-data
-              mountpath: /var/lib/mysql
+              mountPath: /var/lib/mysql
